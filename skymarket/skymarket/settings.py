@@ -46,6 +46,9 @@ INSTALLED_APPS = [
     "users",
     "ads",
     "redoc",
+    "drf_spectacular",
+    "corsheaders",
+    "djoser",
 ]
 
 
@@ -82,16 +85,45 @@ WSGI_APPLICATION = "skymarket.wsgi.application"
 
 # TODO здесь мы настраиваем аутентификацию и пагинацию
 REST_FRAMEWORK = {
-}
-# TODO здесь мы настраиваем Djoser
-DJOSER = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
 }
 
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Skymarket',
+    'DESCRIPTION': 'Skymarket description',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+
+}
+
+# TODO здесь мы настраиваем Djoser
+DJOSER = {
+    'SERIALIZERS': {
+        'user_create': 'users.serializers.UserRegistrationSerializer',
+        'current_user': 'users.serializers.CurrentUserSerializer',
+        'user': 'users.serializers.CurrentUserSerializer',
+
+    },
+    'LOGIN_FIELD': 'email'
+}
+
+AUTH_USER_MODEL = 'users.CustomUser'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 # TODO здесь необходимо настроить подключение к БД
 DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': 'skymarket',
+        'PASSWORD': 'skymarket',
+        'HOST': os.environ.get('DB_HOST'),
+        'PORT': os.environ.get('DB_PORT'),
+    }
 }
 
 
