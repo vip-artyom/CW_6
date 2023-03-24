@@ -11,8 +11,14 @@
 Фронтэнд доступен по адресу: http://127.0.0.1:3000/
 ___
 Для запуска контейнера и наполнения базы необходимо в терминале выполнить следующие команды:
+
+### Из директории market_postgres/
 ```
-docker-compose up --build -d (из директории market_postgres/)
-python ./manage.py migrate (из директории skymarket/)
-python ./manage.py loaddata fixtures/ad.json fixtures/comments.json fixtures/users.json (из директории skymarket/)
+docker-compose up --build -d 
+```
+### Из директории skymarket/
+```
+python ./manage.py makemigrations 
+python ./manage.py migrate 
+python ./manage.py loaddata fixtures/ad.json fixtures/comments.json fixtures/users.json
 ```

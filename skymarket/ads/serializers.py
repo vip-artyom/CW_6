@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from ads.models import Ad, Comment
-from users.models import CustomUser
+from users.models import User
 
 
 class AdSerializer(serializers.ModelSerializer):
@@ -21,21 +21,21 @@ class AdRetrieveSerializer(serializers.ModelSerializer):
     phone = serializers.SlugRelatedField(
         source='author',
         many=False,
-        queryset=CustomUser.objects.all(),
+        queryset=User.objects.all(),
         slug_field='phone'
     )
 
     author_first_name = serializers.SlugRelatedField(
         source='author',
         many=False,
-        queryset=CustomUser.objects.all(),
+        queryset=User.objects.all(),
         slug_field='first_name'
     )
 
     author_last_name = serializers.SlugRelatedField(
         source='author',
         many=False,
-        queryset=CustomUser.objects.all(),
+        queryset=User.objects.all(),
         slug_field='last_name'
     )
 
@@ -63,14 +63,14 @@ class CommentListSerializer(serializers.ModelSerializer):
     author_first_name = serializers.SlugRelatedField(
         source='author',
         many=False,
-        queryset=CustomUser.objects.all(),
+        queryset=User.objects.all(),
         slug_field='first_name'
     )
 
     author_last_name = serializers.SlugRelatedField(
         source='author',
         many=False,
-        queryset=CustomUser.objects.all(),
+        queryset=User.objects.all(),
         slug_field='last_name'
     )
 

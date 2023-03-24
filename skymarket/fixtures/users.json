@@ -1,6 +1,6 @@
 [
   {
-    "model": "users.customuser",
+    "model": "users.user",
     "pk": 1,
     "fields": {
       "email": "test@skypro.ru",
@@ -14,7 +14,7 @@
     }
   },
   {
-    "model": "users.customuser",
+    "model": "users.user",
     "pk": 2,
     "fields": {
       "email": "test2@skypro.ru",
@@ -28,7 +28,7 @@
     }
   },
     {
-    "model": "users.customuser",
+    "model": "users.user",
     "pk": 3,
     "fields": {
       "email": "test3@skypro.ru",
@@ -42,7 +42,7 @@
     }
   },
     {
-    "model": "users.customuser",
+    "model": "users.user",
     "pk": 4,
     "fields": {
       "email": "test4@skypro.ru",
@@ -56,7 +56,7 @@
     }
   },
   {
-    "model": "users.customuser",
+    "model": "users.user",
     "pk": 5,
     "fields": {
       "email": "admin@skypro.ru",
