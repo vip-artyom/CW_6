@@ -106,8 +106,6 @@ DJOSER = {
     'SERIALIZERS': {
         'user_create': 'users.serializers.UserRegistrationSerializer',
         'current_user': 'users.serializers.CurrentUserSerializer',
-        'user': 'users.serializers.CurrentUserSerializer',
-
     },
     'LOGIN_FIELD': 'email'
 }

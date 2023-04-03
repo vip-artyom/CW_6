@@ -9,20 +9,17 @@ Users = get_user_model()
 class UserRegistrationSerializer(BaseUserRegistrationSerializer):
     class Meta:
         model = User
-        fields = ['first_name',
-                  'last_name',
-                  'email',
-                  'password',
-                  'phone',
-                  'image']
+        fields = '__all__'
+
+        def create(self, validated_data):
+            user = User.objects.create(**validated_data)
+            user.set_password(user.password)
+            user.save()
+
+            return user
 
 
 class CurrentUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['first_name',
-                  'last_name',
-                  'email',
-                  'phone',
-                  'id',
-                  'image']
+        fields = '__all__'

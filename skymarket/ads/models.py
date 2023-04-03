@@ -4,9 +4,9 @@ from users.models import User
 
 
 class Ad(models.Model):
-    title = models.CharField(max_length=256)
-    price = models.PositiveIntegerField()
-    description = models.TextField()
+    title = models.CharField(max_length=256, blank=False)
+    price = models.PositiveIntegerField(default=0)
+    description = models.TextField(blank=True, max_length=4000)
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank=False)
     created_at = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(upload_to=MEDIA_ROOT, blank=True, null=True)
@@ -21,8 +21,8 @@ class Ad(models.Model):
 
 
 class Comment(models.Model):
-    text = models.TextField()
-    author = models.ForeignKey('users.User', on_delete=models.CASCADE)
+    text = models.TextField(blank=True, max_length=4000)
+    author = models.ForeignKey('users.User', on_delete=models.CASCADE, null=True)
     ad = models.ForeignKey(Ad, on_delete=models.CASCADE, null=False, blank=False)
     created_at = models.DateTimeField(auto_now_add=True)
 
