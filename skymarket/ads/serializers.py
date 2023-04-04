@@ -11,10 +11,12 @@ class AdSerializer(serializers.ModelSerializer):
 class AdDetailSerializer(serializers.ModelSerializer):
     author_first_name = serializers.CharField(source='author.first_name', read_only=True)
     phone = serializers.CharField(source='author.phone', read_only=True)
+    author_id = serializers.IntegerField(source='author.id', read_only=True)
+    author_last_name = serializers.CharField(source='author.last_name', read_only=True)
 
     class Meta:
         model = Ad
-        fields = ['pk', 'title', 'price', 'author', 'author_first_name', 'image', 'description', 'phone']
+        fields = ['pk', 'image', 'title', 'price', 'description', 'author_id', 'author_first_name',  'phone', 'author_last_name']
 
 
 class AdCreateSerializer(serializers.ModelSerializer):
