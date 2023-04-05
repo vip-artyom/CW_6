@@ -12,7 +12,7 @@ class User(AbstractBaseUser):
     phone = PhoneNumberField()
     email = models.EmailField(unique=True)
     role = models.CharField(max_length=5, choices=UserRoles.choices, default=UserRoles.USER)
-    image = models.ImageField(upload_to=MEDIA_ROOT, blank=True, null=True)
+    image = models.ImageField(upload_to="django_media/", blank=True, null=True)
     is_active = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'email'

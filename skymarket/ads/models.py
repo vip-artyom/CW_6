@@ -9,7 +9,7 @@ class Ad(models.Model):
     description = models.TextField(blank=True, max_length=4000)
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank=False)
     created_at = models.DateTimeField(auto_now_add=True)
-    image = models.ImageField(upload_to=MEDIA_ROOT, blank=True, null=True)
+    image = models.ImageField(upload_to="django_media/", blank=True, null=True)
 
     class Meta:
         verbose_name = 'Объявление'
